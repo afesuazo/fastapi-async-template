@@ -1,2 +1,5 @@
+cryptography~=41.0.1
 fastapi~=0.75.0
+SQLAlchemy~=1.4.41
+sqlmodel~=0.0.8
 uvicorn>=0.20.0

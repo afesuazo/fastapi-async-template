@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes.base import api_router
+from app.database import AppDB
 
 
 def build_app() -> FastAPI:
@@ -18,3 +19,9 @@ def build_app() -> FastAPI:
 
 
 app = build_app()
+
+
+@app.on_event("startup")
+async def startup() -> None:
+    app.state.DB = AppDB()
+    await app.state.DB.initiate_db()

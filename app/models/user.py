@@ -16,17 +16,17 @@ class User(UserBase, table=True):
 
     uid: Optional[int] = Field(default=None, primary_key=True, index=True)
     is_active: bool = Field(default=True)
-    hashed_password: str
+    internal_field: str
 
 
 # Created to differentiate from Base in docs
 
 class UserCreate(UserBase):
-    password: str
+    ...
 
 
 class UserUpdate(UserBase):
-    pass
+    ...
 
 
 class UserRead(UserBase):

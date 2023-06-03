@@ -4,7 +4,6 @@ from fastapi import Depends
 from sqlalchemy import delete, select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-from app.api.auth_utils import get_hashed_password
 from app.crud.base import BaseCRUD
 from app.dependencies.db import get_db
 from app.models.user import User, UserCreate, UserUpdate
@@ -20,7 +19,7 @@ class UserCRUD(BaseCRUD[User, UserCreate, UserUpdate]):
         user_dict = user_data.dict()
         user = User(**user_dict)
 
-        user.hashed_password = get_hashed_password(user_data.password)
+        user.internal_field = "Not visible nor set from user provided data"
 
         self.db_session.add(user)
         await self.db_session.commit()

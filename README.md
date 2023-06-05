@@ -24,13 +24,19 @@ It's a great starting point for beginners looking to get their hands dirty with 
 │   ├── api/                 
 │   │   └── routes/          
 │   │       ├── base.py      # Global router
-│   │       └── basic.py     # Example route
+│   │       ├── basic.py     # Simple route
+│   │       └── users.py     # Route with db operations
 │   │
 │   ├── crud/                # CRUD operations
+│   │       ├── base.py      # Abstract CRUD class
+│   │       └── user.py      # CRUD implementation for user model
+│   │
 │   ├── dependencies/        # Dependencies for routes
 │   │   └── db.py            # DB as a dependency
 │   │
 │   ├── models/              # Database Models
+│   │       └── user.py      # Example model
+│   │
 │   ├── database.py          # Database connection setup
 │   └── main.py              # FastAPI application entry point
 │
@@ -105,8 +111,9 @@ This project is licensed under the terms of the MIT license. See the LICENSE fil
 
 ## To-Do List
 
-- [ ] Add CRUD operations
-- [ ] Add sample model
+- [X] Add CRUD operations
+- [X] Add sample model
 - [ ] Add redis dependency
 - [ ] Add simple tests
+- [ ] Provide detailed config instructions
 - [ ] Add CONTRIBUTING.md

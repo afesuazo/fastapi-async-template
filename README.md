@@ -58,7 +58,7 @@ $ python3 -m venv env
 $ source env/bin/activate
 ```
 
-### Clone and Build the Chat Application
+### Clone and Setup
 
 ```bash
 # Clone the repository

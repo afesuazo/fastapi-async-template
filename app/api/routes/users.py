@@ -1,8 +1,10 @@
 from typing import Optional
 
+from aioredis import Redis
 from fastapi import APIRouter, status, Depends, HTTPException, Query
 
 from app.crud.user import UserCRUD
+from app.dependencies.redis import get_redis
 from app.models.user import UserCreate, User, UserRead
 
 router = APIRouter()
@@ -29,9 +31,18 @@ async def get_all_users(
 )
 async def get_single_user(
         username: str,
-        user_crud: UserCRUD = Depends(UserCRUD)
+        user_crud: UserCRUD = Depends(UserCRUD),
+        redis: Redis = Depends(get_redis)
 ) -> Optional[User]:
+    user_data = await redis.get(username)
+    if user_data:
+        return User.parse_raw(user_data)
+
+    # Cache miss
     user = await user_crud.read_by_username(username)
+    if user:
+        await redis.set(username, user.json())
+
     return user
 
 

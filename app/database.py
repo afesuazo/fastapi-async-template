@@ -17,5 +17,5 @@ class AppDB:
     async def initiate_db(self) -> None:
         async with self.engine.begin() as conn:
             # This will drop and create all tables at startup
-            await conn.run_sync(SQLModel.metadata.drop_all)
+            # await conn.run_sync(SQLModel.metadata.drop_all)
             await conn.run_sync(SQLModel.metadata.create_all)

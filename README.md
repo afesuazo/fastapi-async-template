@@ -32,7 +32,8 @@ It's a great starting point for beginners looking to get their hands dirty with 
 │   │       └── user.py      # CRUD implementation for user model
 │   │
 │   ├── dependencies/        # Dependencies for routes
-│   │   └── db.py            # DB as a dependency
+│   │   ├── db.py            # DB as a dependency
+│   │   └── redis.py         # Redis as a dependency
 │   │
 │   ├── models/              # Database Models
 │   │       └── user.py      # Example model
@@ -111,9 +112,6 @@ This project is licensed under the terms of the MIT license. See the LICENSE fil
 
 ## To-Do List
 
-- [X] Add CRUD operations
-- [X] Add sample model
-- [ ] Add redis dependency
 - [ ] Add simple tests
 - [ ] Provide detailed config instructions
 - [ ] Add CONTRIBUTING.md
